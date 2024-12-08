@@ -5,11 +5,13 @@ scripts:
     - cd src && python manage.py makemigrations
   migrate:
     - cd src && python manage.py migrate
+  createsuperuser:
+    - cd src && python manage.py createsuperuser
   shell:
     - cd src && python manage.py shell
   curl_auth: |
-    curl -X POST -H "Content-Type: application/json" -d '{"username": "cfe", "password": "learncode"}' http://127.0.0.1:8001/api/token/pair
+    curl -X POST -H "Content-Type: application/json" -d '{"username": "admin", "password": "admin"}' http://127.0.0.1:8001/api/token/pair
   curl_protect: |
-    curl -X GET -H "Authorization: Bearer <curl_auth-access-token>" http://127.0.0.1:8001/api/me
+    curl -X GET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNjc0MzQxLCJpYXQiOjE3MzM2NzA3NDEsImp0aSI6IjBjNTViYjVjY2MxNTRjOTBhZWQ0N2NlNGFkODU5ZmU2IiwidXNlcl9pZCI6MX0.lPLRj6Z6v90B8AIzGIaOKH2nRrAqfIvq2Pd0M_wlXY4" http://127.0.0.1:8001/api/me
   
   
